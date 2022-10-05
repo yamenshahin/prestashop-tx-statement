@@ -1,0 +1,1 @@
+<h1>{$greetingsFront}</h1>
