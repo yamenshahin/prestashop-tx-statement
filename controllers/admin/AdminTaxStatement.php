@@ -20,15 +20,13 @@ class AdminTaxStatementController extends ModuleAdminController
 		parent::__construct();
 		// Do your stuff here
 	}
-
 	public function renderList()
-	{
-		$html = '<h1>Hello Admin </h1>';
-		
+    {
+        
+        $output = $this->context->smarty->fetch($this->module->getLocalPath() .
+        'views/templates/admin/admin-template.tpl');
 		$list = parent::renderList();
-		
-		// You can create your custom HTML with smarty or whatever then concatenate your list to it and serve it however you want !
-		return $html . $list;
-	}
+        return $output. $list ;
+    }
 }
 
