@@ -4,7 +4,7 @@
 /**
  * Tax Statement - A Prestashop Module
  * 
- * Mkayn custom module that display tax statements every 14-15 days
+ * Mkayn custom module that display tax statements every 14-15 days 
  * 
  * @author Yamen Shahin <yamenshahin@gmail.com>
  * @version 0.0.1

@@ -4,7 +4,7 @@
 /**
  * Tax Statement - A Prestashop Module
  * 
- * Mkayn custom module that display tax statements every 14-15 days
+ * Mkayn custom module that display tax statements every 14-15 days 
  * 
  * @author Yamen Shahin <yamenshahin@gmail.com>
  * @version 0.0.1
@@ -94,7 +94,7 @@ class TaxStatement extends Module
 		parent::__construct();
 
 		$this->displayName = $this->l('Tax Statement');
-		$this->description = $this->l('Mkayn custom module that display tax statements every 14-15 days');
+		$this->description = $this->l('Mkayn custom module that display tax statements every 14-15 days ');
 		$this->confirmUninstall = $this->l('Are you sure you want to uninstall this module ?');
 	}
 
