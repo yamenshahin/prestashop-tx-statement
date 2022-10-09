@@ -1,0 +1,12 @@
+{
+    "name": "yamen/taxstatement",
+    "require": {
+        "setasign/fpdf": "^1.8"
+    },
+    "authors": [
+        {
+            "name": "Yamen Shahin",
+            "email": "yamenshahin@gmail.com"
+        }
+    ]
+}

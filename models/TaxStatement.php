@@ -26,6 +26,8 @@ class TaxStatementModel extends ObjectModel
 	public $transaction;
 	public $commission_invoice;
 	public $statement_invoice;
+	public $from_id_seller_commission;
+	public $to_id_seller_commission;
 
 	/** Your table definition, adapt to your needs */
 	public static $definition = [
@@ -91,6 +93,18 @@ class TaxStatementModel extends ObjectModel
 				'size' => 256,
 				'required' => true,
 			],
+			'from_id_seller_commission' => [
+				'type' => self::TYPE_INT,
+				'validate' => 'isUnsignedInt',
+				'size' => 11,
+				'required' => true,
+			],
+			'to_id_seller_commission' => [
+				'type' => self::TYPE_INT,
+				'validate' => 'isUnsignedInt',
+				'size' => 11,
+				'required' => true,
+			],
 		],
 	];
 
@@ -113,10 +127,27 @@ class TaxStatementModel extends ObjectModel
 				`transaction` varchar(256) NOT NULL,
 				`commission_invoice` varchar(256) NOT NULL,
 				`statement_invoice` varchar(256) NOT NULL,
+				`from_id_seller_commission` int(11) unsigned NOT NULL,
+				`to_id_seller_commission` int(11) unsigned NOT NULL,
 				PRIMARY KEY (`{$primaryField}`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 		";
+		
+		// Add tax_status col to ets_mp_seller_commission table
+		$sql2 = "DESCRIBE "._DB_PREFIX_."ets_mp_seller_commission";	
+		$columns = Db::getInstance()->executeS($sql2);
+		$found = false;
+		foreach($columns as $col){
+			if($col['Field']=='tax_status'){
+				$found = true;
+				break;
+			}
+		}
+		if(!$found){
+			Db::getInstance()->execute("ALTER TABLE "._DB_PREFIX_."ets_mp_seller_commission ADD tax_status tinyint(1) DEFAULT 0");
+		}
 
+		// Add tax_status col to ets_mp_seller_commission table
 		return Db::getInstance()->execute($sql);
 	}
 }
